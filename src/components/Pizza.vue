@@ -19,6 +19,8 @@
         :counterStyle="'button-clock__counter_pizza'"
         :button="'button-block__btn_pizza'"
         :counter="getCounter"
+        @btn-click-first="decrement"
+        @btn-click-second="increment"
       />
     </div>
   </div>
@@ -43,6 +45,12 @@ export default {
     },
   },
   methods: {
+    increment() {
+      this.$store.commit("increment");
+    },
+    decrement() {
+      this.$store.commit("decrement");
+    },
     setPizzaPrice(pizzaPrice) {
       if (!isNaN(pizzaPrice)) {
         this.$store.commit("setPizzaPrice", pizzaPrice);

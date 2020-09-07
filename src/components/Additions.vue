@@ -1,14 +1,13 @@
 <template>
   <div v-if="pickedDough" class="additions">
     <h2 class="additions__title">{{pizza.addon_item[1].subcat_name}}</h2>
-
     <label
       class="additions__label"
       v-for="add in pizza.addon_item[1].sub_item"
       :key="add.sub_item_id"
     >
       <input
-        @change="[setAddPrice(parseInt(add.price)), pickAdd(), toggleChecked()]"
+        @change="[setAddPrice(parseInt(add.price)), pickAdd()]"
         type="checkbox"
         name="additions"
         class="additions__input"
@@ -17,22 +16,12 @@
       <span class="additions__pseudo"></span>
       <span class="additions__type">{{add.sub_item_name}}</span>
       <span class="additions__price">+ {{add.price}} &#8381;</span>
-      <buttonblock
-        v-if="checked"
-        :button="'button-block__btn_add'"
-        :counter="getCounter()- 1"
-        style="width: 40%"
-      />
     </label>
   </div>
 </template>
 
 <script>
-import ButtonBlock from "./ButtonBlock";
 export default {
-  components: {
-    buttonblock: ButtonBlock,
-  },
   computed: {
     pizza() {
       return this.$store.getters.getPizzaData;
@@ -55,14 +44,6 @@ export default {
     pickAdd() {
       this.$store.commit("pickAdd");
     },
-    toggleChecked() {
-      this.checked = true;
-    },
-  },
-  data() {
-    return {
-      checked: false,
-    };
   },
 };
 </script>
@@ -76,7 +57,11 @@ export default {
   text-align: left;
   margin: 0 0 30px;
 }
-
+.additions__row {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
 .additions__label {
   display: flex;
   justify-content: flex-start;
