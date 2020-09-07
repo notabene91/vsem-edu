@@ -3,22 +3,22 @@
 
 https://notabene91.github.io/vsem-edu/
 
-## Project setup
+## Установка npm
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Запуск проекта на локальном сервере
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Билд и размещение проекта на gh-pages
 ```
-npm run build
+npm run deploy
 ```
 
-### Lints and fixes files
+### Линтер
 ```
 npm run lint
 ```
